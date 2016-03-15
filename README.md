@@ -56,3 +56,4 @@
 * layouts中的css/less非模块化，使用时直接写样式名，container/components中的按模块方式使用
 * 图标样式，glyphicon是bootstrap的图标；icon是[iconfont](http://www.iconfont.cn/)图标
 * mac linux下`npm build`会报错，请修改package.json中设置环境变量的命令set NODE_ENV
+* mock-server端口默认2618，webpack-dev-server默认端口3000，可以在package.json里修改
