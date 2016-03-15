@@ -8,7 +8,7 @@ var mock = require("mockjs");
 var app = require('express')();
 var port = process.argv.slice(2)[0] || 8080;
 var server = app.listen(port, function() {
-  console.info(`Mock server is listening at ${port}`);
+  console.info('Mock server is listening at' + port);
 });
 
 const prefix = '/api';

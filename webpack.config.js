@@ -20,7 +20,7 @@ var plugins = [
     template: path.join(SRC_PATH, 'index.html'),
     chunks: ['common', 'vendor', 'index'] // todo: fix duplicate common.js here
   }),
-  new ExtractTextPlugin(`css/[name]${FILE_HASH_TAG}.css`, {allChunks: true}),
+  new ExtractTextPlugin('css/[name]' + FILE_HASH_TAG + '.css', {allChunks: true}),
   new webpack.optimize.CommonsChunkPlugin(
     'vendor',
     'vendor.v20160303.js', // vendor date
@@ -48,7 +48,7 @@ module.exports = {
   output: {
     path: DIST_PATH,
     publicPath: '',
-    filename: `js/[name]${CHUNK_FILE_HASH_TAG}.js`,
+    filename: 'js/[name]' + CHUNK_FILE_HASH_TAG + '.js',
     chunkFilename: `js/[name].js`
   },
   bail: true,
@@ -98,14 +98,14 @@ module.exports = {
       },
 
       // images
-      {test: /\.(png|gif|jpg|ico)$/, loader: `url?limit=1024&name=img/[name]${FILE_HASH_TAG}.[ext]`},
+      {test: /\.(png|gif|jpg|ico)$/, loader: 'url?limit=1024&name=img/[name]' + FILE_HASH_TAG + '.[ext]'},
 
       // font
-      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: `url?limit=1000&mimetype=application/font-woff&name=font/[name]${FILE_HASH_TAG}.[ext]`},
-      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: `url?limit=1000&mimetype=application/font-woff&name=font/[name]${FILE_HASH_TAG}.[ext]`},
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: `url?limit=1000&mimetype=application/octet-stream&name=font/[name]${FILE_HASH_TAG}.[ext]`},
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: `file?name=font/[name]${FILE_HASH_TAG}.[ext]`},
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: `url?limit=1000&mimetype=image/svg+xml&name=font/[name]${FILE_HASH_TAG}.[ext]`}
+      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=1000&mimetype=application/font-woff&name=font/[name]' + FILE_HASH_TAG + '.[ext]'},
+      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=1000&mimetype=application/font-woff&name=font/[name]' + FILE_HASH_TAG + '.[ext]'},
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=1000&mimetype=application/octet-stream&name=font/[name]' + FILE_HASH_TAG + '.[ext]'},
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file?name=font/[name]' + FILE_HASH_TAG + '.[ext]'},
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=1000&mimetype=image/svg+xml&name=font/[name]' + FILE_HASH_TAG + '.[ext]'}
     ]
   },
 
