@@ -1,7 +1,6 @@
 # webpack react SPA scaffold 
 > react单页项目模版 
 
----------------------------------------
 
 ## 依赖 
 * react react-redux react-router react-router-redux react-dom react-bootstrap 
@@ -17,7 +16,7 @@
     
     # 开发环境（安装了mtt）
     ----------
-    mtt init webpack-react
+    mtt init webpack-react-spa
     
     # 开发和打包
     ---------
@@ -28,7 +27,6 @@
 ## 目录结构   
     ├─mock-server         # 模拟服务器 
     │  └─api.json         # 模拟数据
-    │
     └─src                 # 源码目录  
        ├─actions          # actions
        ├─components       # react组件
