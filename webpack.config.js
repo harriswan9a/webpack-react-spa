@@ -51,7 +51,6 @@ module.exports = {
     filename: 'js/[name]' + CHUNK_FILE_HASH_TAG + '.js',
     chunkFilename: `js/[name].js`
   },
-  bail: true,
   module: {
     loaders: [
       {test: /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot', 'babel-loader']},
