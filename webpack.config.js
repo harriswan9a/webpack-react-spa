@@ -8,6 +8,9 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var IS_DEV = process.env.NODE_ENV !== 'production';
 
+var autoprefixer = require('autoprefixer');
+var precss = require('precss');
+
 // production add hash
 // hash bug see https://github.com/webpack/webpack/issues/1315
 var FILE_HASH_TAG = IS_DEV ? '' : '_[hash:5]';
@@ -66,8 +69,8 @@ module.exports = {
         loader: ExtractTextPlugin.extract(
           'style',
           'css?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!' +
-          'less?outputStyle=expanded&sourceMap&sourceMapContents!' +
-          'autoprefixer?browsers=last 4 version'
+          'postcss!' +
+          'less?outputStyle=expanded&sourceMap&sourceMapContents'
         , {publicPath: '../'})
       },
       {
@@ -76,8 +79,8 @@ module.exports = {
         loader: ExtractTextPlugin.extract(
           'style',
           'css?sourceMap!' +
-          'less?outputStyle=expanded&sourceMap&sourceMapContents!' +
-          'autoprefixer?browsers=last 4 version'
+          'postcss!' +
+          'less?outputStyle=expanded&sourceMap&sourceMapContents'
         , {publicPath: '../'})
       },
       // css
@@ -86,8 +89,8 @@ module.exports = {
         include: /src/,
         loader: ExtractTextPlugin.extract(
           'style',
-          'css?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!' +
-          'autoprefixer?browsers=last 4 version!'
+          'postcss!' +
+          'css?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
         , {publicPath: '../'})
       },
       {
@@ -106,6 +109,13 @@ module.exports = {
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file?name=font/[name]' + FILE_HASH_TAG + '.[ext]'},
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=1000&mimetype=image/svg+xml&name=font/[name]' + FILE_HASH_TAG + '.[ext]'}
     ]
+  },
+
+  postcss: function () {
+    return {
+      defaults: [precss, autoprefixer],
+      cleaner:  [autoprefixer({ browsers: ['last 4 versions'] })]
+    };
   },
 
   plugins: plugins,
